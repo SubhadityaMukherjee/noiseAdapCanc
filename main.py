@@ -16,9 +16,8 @@ duration = 2
 
 
 def rem_empty(wave):
-
-    return [np.array(wave),-np.array(wave)]
-
+    wave2 = wave.astype('int32')
+    return [np.array(wave),-np.array(wave),np.bitwise_xor(np.array(wave2),-np.array(wave2))]
 
 def rem_empty_2(wave):
     return np.array([x for x in wave if x != 0.0])
@@ -37,6 +36,7 @@ def main():
     print(temp)
     wave_peaker(temp[0],"orig")
     wave_peaker(temp[1],"neg")
+    wave_peaker(temp[2],"xr")
 
 
 main()
